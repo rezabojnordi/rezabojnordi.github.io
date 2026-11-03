@@ -1,0 +1,5 @@
+Northern Lights / نورهای شمالی
+Original 96-second instrumental created for Penguin Ops.
+80 BPM; soft keys, bell melody, warm pads, bass and light percussion.
+Synthesized from oscillators and generated noise; no third-party recordings, samples or borrowed melody.
+Included locally for offline and GitHub Pages playback.

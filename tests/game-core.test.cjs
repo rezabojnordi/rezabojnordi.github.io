@@ -1,0 +1,17 @@
+const assert=require('node:assert/strict');
+const C=require(require('node:fs').existsSync(__dirname+'/../dist/game-core.js')?'../dist/game-core.js':'../game-core.js');
+const base=()=>({x:0,z:13,y:0,vy:0,angle:0,speed:0,lean:0});
+let p=base();for(let n=0;n<120;n++)C.drive(p,{up:true},1/60);assert(p.speed>15&&p.speed<=20,'motorcycle accelerates within top speed');
+const speed=p.speed;for(let n=0;n<35;n++)C.drive(p,{brake:true},1/60);assert(p.speed<speed*.02,'braking stops the bike');
+p=base();for(let n=0;n<120;n++)C.drive(p,{up:true,boost:true},1/60);assert(p.speed>24&&p.speed<=28,'boost raises maximum speed');
+p=base();for(let n=0;n<60;n++)C.drive(p,{down:true},1/60);assert(p.speed<0&&p.speed>=-7,'reverse is limited');
+p=base();p.speed=10;C.drive(p,{up:true,left:true},.1);assert(p.angle>0&&p.lean>0,'steering changes heading and lean');
+p={...base(),x:0,z:0};assert(C.move(p,0,18,[{x:0,z:5,w:8,d:1,h:1.4}]),'collision is detected even over a large step');assert(p.z<4,'cannot tunnel through a wall');
+p={...base(),x:0,z:0,y:2};C.move(p,0,12,[{x:0,z:5,w:8,d:1,h:1.4}]);assert(p.z>11,'airborne rider can clear a low barrier');
+p={...base(),x:69,z:10};C.move(p,20,0,[]);assert(C.inside(p.x,p.z),'cannot leave the island');
+const r=C.ramps[0];const angle=r.angle;const pos=(z)=>({x:r.x+Math.sin(angle)*z,z:r.z+Math.cos(angle)*z});let low=pos(-3),high=pos(3);assert(C.groundHeight(high.x,high.z)>C.groundHeight(low.x,low.z),'ramps rise along their direction');
+p={...base(),...pos(5),y:2.5,speed:20};C.vertical(p,.016,r);assert(p.vy>0,'leaving a ramp at speed launches the motorcycle');
+p=base();p.vy=8;for(let n=0;n<120;n++)C.vertical(p,1/60,null);assert.equal(p.y,0,'jump lands on ground');
+const obstacle={x:0,z:8,w:7,d:3,h:4};const route=C.route({x:0,z:0},{x:0,z:16},[obstacle]);assert(route.length>0,'route exists around obstacle');assert(route.every(v=>!C.blocked(v.x,v.z,[obstacle])),'route never crosses obstacles');
+const race={active:true,next:1,passed:0,time:0};assert.equal(C.advanceRace(race,{x:0,z:-46}),false,'cannot skip ordered gates');for(const i of[1,2,3,4,5,6,7,0]){const[x,z]=C.checkpoints[i];const res=C.advanceRace(race,{x,z});assert.equal(res,i===0?'finish':'checkpoint')}assert.equal(race.active,false);assert.equal(race.passed,8);
+console.log('PASS: acceleration, braking, boost, reverse, steering, solid collisions, airborne clearance, boundaries, ramp launch, landing, route finding, ordered lap completion.');

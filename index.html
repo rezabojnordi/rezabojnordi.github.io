@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f6f7ed">
+  <title>Reza Bojnordi — Penguin Ops | A playable portfolio</title>
+  <meta name="description" content="Explore the world of Reza Bojnordi: Site Reliability Engineer, DevOps and cloud infrastructure specialist with 10+ years of experience. A playable penguin adventure through Linux, cloud and blockchain.">
+  <meta property="og:title" content="Reza Bojnordi — Penguin Ops">
+  <meta property="og:description" content="A little penguin. A world of infrastructure. Explore an SRE's career, one island at a time.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/penguin.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="adventure.css">
+  <link rel="stylesheet" href="rally.css">
+</head>
+<body class="adventure">
+  <a class="skip-link" href="#resume">Skip to résumé</a>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Reza Bojnordi home"><span class="brand-symbol">r<span>_</span></span><span>PENGUIN OPS<span class="brand-sub" data-en="REZA BOJNORDI · SRE / DEVOPS" data-fa="رضا بجنوردی · مهندس زیرساخت">REZA BOJNORDI · SRE / DEVOPS</span></span></a>
+    <nav aria-label="Main navigation">
+      <button class="nav-link active" data-action="explore" data-en="The world" data-fa="دنیای بازی">The world</button>
+      <button class="nav-link" data-action="resume" data-en="My experience" data-fa="تجربه‌های من">My experience</button>
+      <button class="nav-link" data-action="contact" data-en="Say hello ↗" data-fa="ارتباط ↗">Say hello ↗</button>
+    </nav>
+    <div class="header-actions"><button id="language" class="language" aria-label="Switch to Persian">فارسی</button><a class="download-link" href="assets/Reza_Bojnordi_SRE_DevOps.pdf" download><span data-en="Download CV" data-fa="دانلود رزومه">Download CV</span><span aria-hidden="true">↙</span></a></div>
+  </header>
+
+  <main id="app">
+    <section class="world" aria-label="Interactive portfolio world">
+      <canvas id="world" aria-label="Interactive 3D island. Move with WASD or arrows, jump with Space, slide with Shift, and explore with E. Switch to the 2D map at any time." tabindex="0"></canvas>
+      <div class="map-grid" aria-hidden="true"></div>
+      <div class="coordinates" aria-hidden="true">NODE 41 / EXPLORER 01 <br><span>A SMALL WORLD. A LONG JOURNEY.</span></div>
+      <div class="view-switch" role="group" aria-label="World view"><button id="view-3d" class="selected" aria-pressed="true"><span class="view-icon">◇</span> <span data-en="3D world" data-fa="دنیای سه‌بعدی">3D world</span></button><button id="view-2d" aria-pressed="false"><span class="view-icon">▦</span> <span data-en="2D map" data-fa="نقشهٔ دوبعدی">2D map</span></button></div>
+      <div class="world-badge"><span class="live-dot"></span><span data-en="A PLAYABLE PORTFOLIO" data-fa="یک رزومهٔ قابل بازی">A PLAYABLE PORTFOLIO</span><span class="badge-version">v3.0</span></div>
+
+      <div id="intro" class="intro">
+        <div class="eyebrow"><span class="mini-line"></span><span data-en="HELLO WORLD, I’M REZA." data-fa="سلام دنیا، من رضا هستم.">HELLO WORLD, I’M REZA.</span></div>
+        <h1 data-en="Small penguin. <br>Big adventures. <br><em>Real experience.</em>" data-fa="یک پنگوئن کوچک. <br>ماجراجویی بزرگ. <br><em>تجربه‌های واقعی.</em>">Small penguin. <br>Big adventures. <br><em>Real experience.</em></h1>
+        <p class="intro-copy" data-en="Ride a motorcycle. Chase a new record. <br>Discover my journey through Linux, cloud & blockchain." data-fa="سوار موتور شو، بپر و رکورد تازه بزن. <br>مسیر من در لینوکس، کلاد و بلاک‌چین را کشف کن.">Ride a motorcycle. Chase a new record. <br>Discover my journey through Linux, cloud & blockchain.</p>
+        <button id="start" class="primary-button"><span class="play-icon">▶</span><span data-en="Enter the world" data-fa="ورود به دنیای من">Enter the world</span><span class="arrow">↗</span></button>
+        <p class="no-game"><span data-en="Just here for the résumé?" data-fa="فقط برای رزومه اینجایی؟">Just here for the résumé?</span> <button data-action="resume" data-en="Take the shortcut ↗" data-fa="مسیر کوتاه ↗">Take the shortcut ↗</button></p>
+        <div class="intro-facts"><div><strong>10<span>+</span></strong><small data-en="YEARS BUILDING" data-fa="سال تجربه">YEARS BUILDING</small></div><div><strong>3</strong><small data-en="CLOUD REGIONS" data-fa="منطقهٔ کلاد">CLOUD REGIONS</small></div><div><strong>∞</strong><small data-en="CURIOSITY" data-fa="کنجکاوی">CURIOSITY</small></div></div>
+      </div>
+
+      <div class="expedition-pill" id="expedition-pill" hidden><img src="assets/penguin.svg" alt=""><div><span data-en="PIP’S EXPEDITION" data-fa="ماجراجویی پیپ">PIP’S EXPEDITION</span><strong id="current-location">Basecamp / اردوگاه</strong></div></div>
+      <div id="game-hud" class="game-hud collapsed" hidden>
+        <div class="quest-heading"><span class="eyebrow" data-en="YOUR MISSION" data-fa="مأموریت شما">YOUR MISSION</span><button id="quest-toggle" class="circle-button" aria-label="Toggle mission log" aria-expanded="false">☰</button><button id="help" class="circle-button" aria-label="How to play">?</button></div>
+        <h2 data-en="Bring the island <br>back online." data-fa="جزیره را دوباره <br>آنلاین کن.">Bring the island <br>back online.</h2>
+        <p data-en="Six stations. One curious penguin. <br>A career worth exploring." data-fa="شش ایستگاه. یک پنگوئن کنجکاو. <br>یک مسیر شغلی برای کشف‌کردن.">Six stations. One curious penguin. <br>A career worth exploring.</p>
+        <div class="quest-progress"><span id="progress-label">0 / 6 stations online</span><span id="progress-percent">0%</span></div>
+        <div class="progress-track"><span id="progress-bar"></span></div>
+        <div id="station-list" class="station-list"></div>
+        <button id="view-resume" class="text-button" data-action="resume" data-en="View the full résumé ↗" data-fa="نمایش رزومه کامل ↗">View the full résumé ↗</button>
+      </div>
+
+      <button id="garage-tag" class="garage-tag" data-en="F · RIDE ME" data-fa="F · سوار شو">F · RIDE ME</button>
+      <button id="map-overview" class="mini-map" aria-label="Toggle full map" hidden><span data-en="NORTHERN NETWORK" data-fa="شبکهٔ شمالی">NORTHERN NETWORK</span><canvas id="mini-map" width="160" height="142" aria-hidden="true"></canvas><small data-en="M · OPEN MAP" data-fa="M · نقشه">M · OPEN MAP</small></button>
+      <section id="rally-hud" class="rally-hud" aria-label="Motorcycle and rally controls" hidden>
+        <div class="rally-stats"><div class="speed-stat"><small id="ride-mode">ON FOOT</small><strong id="speed-value">—</strong><span>km/h</span></div><div class="chips-stat"><small data-en="DATA CHIPS" data-fa="تراشه‌ها">DATA CHIPS</small><strong id="chip-count">0 / 24</strong><div class="boost-track" aria-label="Boost energy"><i id="boost-fill"></i></div><small data-en="BOOST ENERGY" data-fa="انرژی بوست">BOOST ENERGY</small></div><div class="lap-stat"><small id="race-caption">FROST LOOP</small><strong id="race-time">00:00.0</strong><small><span data-en="BEST" data-fa="رکورد">BEST</span> <span id="best-time">—</span></small></div></div>
+        <div class="rally-actions"><button id="ride-action"><kbd>F</kbd><span id="ride-label">Ride motorcycle</span><span aria-hidden="true">↗</span></button><button id="race-action" aria-pressed="false">Start rally</button><button id="recover-action" title="Return to basecamp" aria-label="Return to basecamp">↺</button></div>
+        <p id="drive-hint">WASD to wander · F to ride</p>
+      </section>
+      <button id="touch-brake" class="touch-action" aria-label="Brake" hidden>■<span data-en="brake" data-fa="ترمز">brake</span></button>
+      <div class="camera-controls"><button id="camera-out" aria-label="Zoom out">−</button><button id="camera-in" aria-label="Zoom in">+</button><span></span><button id="camera-left" aria-label="Rotate camera left">↶</button><button id="camera-right" aria-label="Rotate camera right">↷</button><button id="camera-home" aria-label="Show whole island">⌂</button></div><div id="mode-announcement" class="sr-only" role="status"></div>
+      <div id="labels" class="world-labels"></div>
+      <div id="player-label" class="player-label" aria-hidden="true"><span data-en="YOU" data-fa="شما">YOU</span><i>⌄</i></div>
+      <button id="interact" class="interact-button" hidden><kbd>E</kbd><span>Explore station</span><span>↗</span></button>
+      <div class="scene-note" id="scene-note"><span class="note-star">✦</span><div><strong data-en="A motorcycle. A coastal circuit. A few happy detours." data-fa="یک موتور، یک جادهٔ ساحلی و کلی مسیر برای کشف‌کردن.">A motorcycle. A coastal circuit. A few happy detours.</strong><span data-en="Drag to orbit · Scroll to zoom · Click to wander" data-fa="بکش تا دوربین بچرخد · اسکرول برای زوم · کلیک برای حرکت">Drag to orbit · Scroll to zoom · Click to wander</span></div></div>
+      <div class="world-tools"><button id="world-help" class="circle-button" aria-label="How to play">?</button><div class="music-control"><button id="sound" class="circle-button" title="Play background music" aria-label="Play background music" aria-pressed="false" aria-describedby="music-track-title">♫<span class="sound-slash"></span></button><div class="music-popover"><div class="music-track"><span class="music-cover" aria-hidden="true">♫</span><div><strong id="music-track-title" data-en="Northern Lights" data-fa="نورهای شمالی">Northern Lights</strong><small data-en="PENGUIN OPS · ORIGINAL SOUNDTRACK" data-fa="موسیقی اختصاصی پنگوئن اُپس">PENGUIN OPS · ORIGINAL SOUNDTRACK</small></div></div><div class="volume-heading"><label for="music-volume" data-en="Volume" data-fa="بلندی صدا">Volume</label><output id="music-volume-value" for="music-volume">35%</output></div><input id="music-volume" type="range" min="0" max="100" step="1" value="35" aria-label="Music volume"></div></div><button id="motion" class="circle-button" title="Pause ambient animation" aria-label="Pause ambient animation" aria-pressed="false">Ⅱ</button><button id="map-toggle" class="circle-button mobile-only" title="Stations" aria-label="Show station map">▦</button></div>
+      <div class="touch-controls" id="touch-controls" aria-label="Movement controls" hidden><button data-direction="up" aria-label="Move up">↑</button><div><button data-direction="left" aria-label="Move left">←</button><button data-direction="down" aria-label="Move down">↓</button><button data-direction="right" aria-label="Move right">→</button></div></div>
+      <button id="touch-jump" class="touch-action" aria-label="Jump" hidden>↟<span data-en="jump" data-fa="پرش">jump</span></button><button id="touch-slide" class="touch-action" aria-label="Slide" hidden>≋<span data-en="slide" data-fa="سرخوردن">slide</span></button>
+      <div id="toast" role="status" class="toast" hidden></div>
+    </section>
+    <footer class="bottom-bar"><div class="footer-identity"><span class="live-dot"></span><span data-en="BASED IN ISTANBUL, TÜRKİYE" data-fa="ساکن استانبول، ترکیه">BASED IN ISTANBUL, TÜRKİYE</span></div><div class="controls-hint"><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd><span data-en="move" data-fa="حرکت">move</span></span><span><kbd>E</kbd><span data-en="explore" data-fa="ورود">explore</span></span><span><kbd>SPACE</kbd><span data-en="jump" data-fa="پرش">jump</span></span><span><kbd>F</kbd><span data-en="ride" data-fa="موتور">ride</span></span><span><kbd>SHIFT</kbd><span data-en="boost" data-fa="بوست">boost</span></span></div><span class="footer-signature" data-en="A SMALL PENGUIN. A BIG WORLD." data-fa="یک پنگوئن کوچک. یک دنیای بزرگ.">A SMALL PENGUIN. A BIG WORLD.</span></footer>
+  </main>
+
+  <dialog id="station-dialog" class="station-dialog" aria-labelledby="station-title"><button class="modal-close" data-close aria-label="Close station">×</button><div id="station-content"></div></dialog>
+  <dialog id="resume-dialog" class="resume-dialog" aria-labelledby="resume-title"><button class="modal-close" data-close aria-label="Close résumé">×</button><div id="resume-content"></div></dialog>
+  <dialog id="help-dialog" class="small-dialog" aria-labelledby="help-title"><button class="modal-close" data-close aria-label="Close instructions">×</button><div class="eyebrow" data-en="FIELD GUIDE" data-fa="راهنمای بازی">FIELD GUIDE</div><h2 id="help-title" data-en="A little adventure. <br>At your own pace." data-fa="یک ماجراجویی کوچک. <br>با سرعت خودت.">A little adventure. <br>At your own pace.</h2><p data-en="A fictional network outage has scattered the island’s power. Meet Pip, your Linux-loving guide. Ride between six résumé stations, collect 24 data chips, jump the ramps and race through 8 golden gates. Your best lap stays in this browser. Click a station for automatic navigation; manual movement takes over immediately." data-fa="در داستان بازی، شبکهٔ جزیره از کار افتاده. پیپ، پنگوئن عاشق لینوکس، راهنمای توست. با موتور به شش ایستگاه رزومه سر بزن، ۲۴ تراشه جمع کن و از رمپ‌ها بپر. در مسابقه، به‌ترتیب از ۸ دروازهٔ طلایی رد شو. بهترین رکورد در مرورگر ذخیره می‌شود. کلیک روی نام ایستگاه، مسیر خودکار را شروع می‌کند؛ کلیدهای حرکت کنترل را به تو برمی‌گردانند.">A fictional network outage has scattered the island’s power. Meet Pip, your Linux-loving guide. Ride between six résumé stations, collect 24 data chips, jump the ramps and race through 8 golden gates. Your best lap stays in this browser. Click a station for automatic navigation; manual movement takes over immediately.</p><ul class="help-controls"><li><b>W A S D / ↑ ↓ ← →</b><span data-en="Move around the island" data-fa="حرکت در جزیره">Move around the island</span></li><li><b>E / Enter</b><span data-en="Explore a nearby station" data-fa="ورود به ایستگاه نزدیک">Explore a nearby station</span></li><li><b data-en="Click / Tap" data-fa="کلیک / لمس">Click / Tap</b><span data-en="Walk to a point or visit a station" data-fa="حرکت به نقطه یا ورود به ایستگاه">Walk to a point or visit a station</span></li><li><b>F</b><span data-en="Ride or park the motorcycle" data-fa="سوارشدن یا پیاده‌شدن از موتور">Ride or park the motorcycle</span></li><li><b>W / S · A / D</b><span data-en="On the motorcycle: throttle / reverse · steer" data-fa="روی موتور: گاز و دنده‌عقب · فرمان">On the motorcycle: throttle / reverse · steer</span></li><li><b>B · T · R</b><span data-en="Brake · start/end rally · return to basecamp" data-fa="ترمز · شروع/پایان مسابقه · بازگشت به اردوگاه">Brake · start/end rally · return to basecamp</span></li><li><b>Space / Shift</b><span data-en="Jump / boost (slide on foot)" data-fa="پرش / بوست (سرخوردن در حالت پیاده)">Jump / boost (slide on foot)</span></li><li><b data-en="Drag / Wheel" data-fa="کشیدن / اسکرول">Drag / Wheel</b><span data-en="Orbit / zoom the camera" data-fa="چرخش / زوم دوربین">Orbit / zoom the camera</span></li><li><b>Esc</b><span data-en="Close a panel" data-fa="بستن پنجره">Close a panel</span></li></ul><p class="fine-print" data-en="Game scenarios are illustrative. Career facts come from Reza’s résumés. Progress is saved in this browser. Every section is also accessible without playing." data-fa="سناریوها داستانی هستند و اطلاعات شغلی از رزومه‌های رضا آمده‌اند. پیشرفت در همین مرورگر ذخیره می‌شود. همهٔ بخش‌ها بدون بازی هم قابل دسترسی هستند.">Game scenarios are illustrative. Career facts come from Reza’s résumés. Progress is saved in this browser. Every section is also accessible without playing.</p><button class="primary-button" data-close data-en="Got it. Let’s go! →" data-fa="فهمیدم، بزن بریم! ←">Got it. Let’s go! →</button><button id="reset" class="reset-button" data-en="Reset game progress" data-fa="شروع دوبارهٔ بازی">Reset game progress</button></dialog>
+  <noscript><section class="noscript"><h1>Reza Bojnordi</h1><p>Site Reliability Engineer | DevOps | Cloud Infrastructure. Istanbul, Türkiye. 10+ years of experience in Linux, cloud infrastructure and automation.</p><p>Currently at BCW Group; previously Eranyacloud, GreenWeb and Part Software Group.</p><p>The interactive world uses JavaScript. You can still <a href="assets/Reza_Bojnordi_SRE_DevOps.pdf">download my full résumé</a> or <a href="mailto:rezabojnordi2012@gmail.com">email me</a>.</p></section></noscript>
+  <audio id="background-music" src="assets/northern-lights.mp3" preload="none" loop></audio>
+  <script src="content.js"></script>
+  <script src="engine.js"></script>
+  <script src="game-core.js"></script>
+  <script src="world.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
